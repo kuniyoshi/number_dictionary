@@ -1,41 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <d:dictionary xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://www.apple.com/DTDs/DictionaryService-1.0.rng">
-<d:entry id="WeaponType" d:title="WeaponType">
-	<d:index d:value="WeaponType"/>
-	<div d:priority="2"><h1>WeaponType</h1></div>
-	<div>WeaponType</div>
-	<div d:priority="2">
-		<ul>
-			<li>Sword : 1</li>
-			<li>Bow : 2</li>
-			<li>Magic : 3</li>
-		</ul>
-	</div>
-	<div d:priority="2">
-		<h3><a href="no_url_for_now"><b>ソース</b></a></h3>
-	</div>
-</d:entry>
-<d:entry id="Sword" d:title="WeaponType.Sword">
-	<d:index d:value="Sword"/>
-	<d:index d:value="1"/>
-	<d:index d:value="WeaponType.Sword"/>
-	<d:index d:value="剣"/>
-	<div d:priority="2"><h1>WeaponType.Sword (剣) = 1</h1></div>
-</d:entry>
-<d:entry id="Bow" d:title="WeaponType.Bow">
-	<d:index d:value="Bow"/>
-	<d:index d:value="2"/>
-	<d:index d:value="WeaponType.Bow"/>
-	<d:index d:value="弓矢"/>
-	<div d:priority="2"><h1>WeaponType.Bow (弓矢) = 2</h1></div>
-</d:entry>
-<d:entry id="Magic" d:title="WeaponType.Magic">
-	<d:index d:value="Magic"/>
-	<d:index d:value="3"/>
-	<d:index d:value="WeaponType.Magic"/>
-	<d:index d:value="魔法"/>
-	<div d:priority="2"><h1>WeaponType.Magic (魔法) = 3</h1></div>
-</d:entry>
 <d:entry id="MoveSpeedType" d:title="MoveSpeedType">
 	<d:index d:value="MoveSpeedType"/>
 	<div d:priority="2"><h1>MoveSpeedType</h1></div>
@@ -71,6 +35,42 @@
 	<d:index d:value="MoveSpeedType.Fast"/>
 	<d:index d:value="速い"/>
 	<div d:priority="2"><h1>MoveSpeedType.Fast (速い) = 3</h1></div>
+</d:entry>
+<d:entry id="WeaponType" d:title="WeaponType">
+	<d:index d:value="WeaponType"/>
+	<div d:priority="2"><h1>WeaponType</h1></div>
+	<div>WeaponType</div>
+	<div d:priority="2">
+		<ul>
+			<li>Sword : 1</li>
+			<li>Bow : 2</li>
+			<li>Magic : 3</li>
+		</ul>
+	</div>
+	<div d:priority="2">
+		<h3><a href="no_url_for_now"><b>ソース</b></a></h3>
+	</div>
+</d:entry>
+<d:entry id="Sword" d:title="WeaponType.Sword">
+	<d:index d:value="Sword"/>
+	<d:index d:value="1"/>
+	<d:index d:value="WeaponType.Sword"/>
+	<d:index d:value="剣"/>
+	<div d:priority="2"><h1>WeaponType.Sword (剣) = 1</h1></div>
+</d:entry>
+<d:entry id="Bow" d:title="WeaponType.Bow">
+	<d:index d:value="Bow"/>
+	<d:index d:value="2"/>
+	<d:index d:value="WeaponType.Bow"/>
+	<d:index d:value="弓矢"/>
+	<div d:priority="2"><h1>WeaponType.Bow (弓矢) = 2</h1></div>
+</d:entry>
+<d:entry id="Magic" d:title="WeaponType.Magic">
+	<d:index d:value="Magic"/>
+	<d:index d:value="3"/>
+	<d:index d:value="WeaponType.Magic"/>
+	<d:index d:value="魔法"/>
+	<div d:priority="2"><h1>WeaponType.Magic (魔法) = 3</h1></div>
 </d:entry>
 </d:dictionary>
 

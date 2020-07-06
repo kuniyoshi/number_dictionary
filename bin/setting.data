@@ -1,0 +1,7 @@
+{
+    tool_kit_dir            => "path/to/tool_kit_dir",
+    dictionary_name         => "MyProject",
+    dictionary_read         => "MY PROJECT",
+    dictionary_identifier   => "com.example.my_project",
+    version                 => "0.01",
+};
