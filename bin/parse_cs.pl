@@ -7,6 +7,15 @@ use open qw( :utf8 :std );
 use Data::Dumper;
 use Readonly;
 
+Readonly my @HEADERS => qw(
+    type
+    type_read
+    type_url
+    name
+    value
+    read
+);
+
 Readonly my $STATE_WAIT_ENUM        => "wait_enum";
 Readonly my $STATE_IN_ENUM_SUMMARY  => "in_enum_summary";
 Readonly my $STATE_IN_ENUM          => "in_enum";
@@ -39,6 +48,8 @@ my %processor = (
     $STATE_END_ENUM         => \&process_end_enum,
 );
 
+say join "\t", @HEADERS;
+
 while ( <> ) {
     chomp( my $line = $_ );
     my $did_consume;
@@ -59,6 +70,8 @@ while ( <> ) {
 #warn Dumper \%type;
         my @rows = format_type( %type );
         print map { $_, "\n" } @rows;
+
+        %type = ( );
 
         $state = $STATE_WAIT_ENUM;
     }
@@ -115,6 +128,7 @@ sub process_in_value {
         my $values_ref = ( $type_ref->{values} //= [] );
         my( $name, $value ) = ( $1, $2 );
         my $read = delete $type_ref->{work_space};
+        $read =~ s{です}{};
 
         my %value = (
             name => $name,
@@ -157,7 +171,7 @@ sub process_in_value_summary {
     if ( $line =~ m{ /// \s+ </summary> }msx ) {
         $next = $STATE_WAIT_VALUE;
     }
-    elsif ( $line =~ m{ /// (.*) }msx && $1 ) {
+    elsif ( $line =~ m{ /// \s* (.*) }msx && $1 ) {
         my $summary = $type_ref->{work_space} || q{};
         $summary = $summary . $1;
         $type_ref->{work_space} = $summary;

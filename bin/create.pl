@@ -87,7 +87,7 @@ END_DIE
     for my $type_name ( keys %type ) {
         my $type_ref = $type{ $type_name };
 
-        die "Invalid type found: " . Dumper( $type_ref )
+        die "Invalid type found: " . Data::Dumper->new( [ $type_ref ] )->Terse( 1 )->Indent( 0 )->Dump( )
             if !$type_ref->{name}
                 || !defined( $type_ref->{type_read} )
                 || !defined( $type_ref->{type_url} );
