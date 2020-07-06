@@ -15,3 +15,8 @@ IMAGE
 
 ![search result](image/search_by_3.png)
 
+PREPARE
+
+This requires `Dictionary Development Kit` where in `Additional Tools for Xcode`.
+
+Get it from: https://developer.apple.com/download/more/
