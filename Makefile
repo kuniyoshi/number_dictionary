@@ -9,6 +9,9 @@ CREATE			=	create.pl
 LIST_CS_FILES	=	bin/list.sh
 
 dictionary_name := $$(perl -e 'my $$setting = do "./bin/$(SETTING_FILENAME)"; print $$setting->{dictionary_name}')
+PLIST_NAME	= $(dictionary_name)Info.plist
+DICTIONARY_NAME	= $(dictionary_name)Dictionary.xml
+CSS_NAME	= $(dictionary_name)Dictionary.css
 
 template:
 	mkdir -p $(TEMPLATE_DIR)
@@ -16,7 +19,10 @@ template:
 	mkdir -p $(DICTIONARY_DIR)
 	bin/instantiate.pl \
 		$(META_TEMPLATE_DIR)/plist.tmpl \
-		>"$(DICTIONARY_DIR)/$(dictionary_name)Info.plist"
+		>"$(DICTIONARY_DIR)/$(PLIST_NAME)"
+	bin/instantiate.pl \
+		$(META_TEMPLATE_DIR)/css.tmpl \
+		>"$(DICTIONARY_DIR)/$(CSS_NAME)"
 	bin/instantiate.pl \
 		$(META_TEMPLATE_DIR)/Makefile.tmpl \
 		>$(DICTIONARY_DIR)/Makefile
@@ -25,10 +31,13 @@ instantiate:
 	$(LIST_CS_FILES) \
 		| xargs bin/parse_cs.pl \
 		| bin/create.pl -template_filename=$(TEMPLATE_DIR)/$(dictionary_name).tmpl \
-		>$(DICTIONARY_DIR)/$(dictionary_name).xml
+		>"$(DICTIONARY_DIR)/$(DICTIONARY_NAME)"
 
 build:
 	$(MAKE) -C $(DICTIONARY_DIR)
+
+install:
+	$(MAKE) -C $(DICTIONARY_DIR) install
 
 test:
 	mkdir -p $(TEMPLATE_DIR)
