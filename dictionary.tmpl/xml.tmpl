@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:dictionary xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://www.apple.com/DTDs/DictionaryService-1.0.rng">
+[% FOREACH type IN types -%]
+<d:entry id="[% type.id %]" d:title="[% type.name %]">
+	<d:index d:value="[% type.name %]"/>
+	<div d:priority="2"><h1>[% type.name %]</h1></div>
+	<div>[% type.read %]</div>
+	<div d:priority="2">
+		<ul>
+[%   FOREACH value IN type.values -%]
+			<li>[% value.name %] : [% value.value %]</li>
+[%   END # FOREACH value IN type.values -%]
+		</ul>
+	</div>
+	<div d:priority="2">
+		<h3><a href="[% type.url %]"><b>ソース</b></a></h3>
+	</div>
+</d:entry>
+[%   FOREACH value IN type.values -%]
+<d:entry id="[% value.id %]" d:title="[% value.title %]">
+[%     FOREACH index IN value.indexes -%]
+	<d:index d:value="[% index %]"/>
+[%     END # FOREACH index IN value.indexes -%]
+	<div d:priority="2"><h1>[% type.name %].[% value.name %] ([% value.read %]) = [% value.value %]</h1></div>
+</d:entry>
+[%   END # FOREACH value IN type.values -%]
+[% END # FOREACH type IN types -%]
+</d:dictionary>
