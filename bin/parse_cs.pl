@@ -90,9 +90,9 @@ sub format_type {
         or die "No values found in ", Dumper \%type;
 
     for my $value_ref ( @{ $values_ref } ) {
-        die "Invalid value found: ", Dumper $value_ref
+        die "Invalid value found in $type_name: ", Data::Dumper->new( [ $value_ref ] )->Terse( 1 )->Indent( 0 )->Dump( )
             if !$value_ref->{name}
-                || !$value_ref->{value};
+                || !defined( $value_ref->{value} );
 
         my $value_read = $value_ref->{read};
 
@@ -128,7 +128,8 @@ sub process_in_value {
         my $values_ref = ( $type_ref->{values} //= [] );
         my( $name, $value ) = ( $1, $2 );
         my $read = delete $type_ref->{work_space};
-        $read =~ s{です}{};
+        $read =~ s{です}{}
+            if $read;
 
         my %value = (
             name => $name,

@@ -102,12 +102,12 @@ END_DIE
 
         CONCRETE_VALUES:
         for my $value_ref ( @{ $type_ref->{values} } ) {
-            die "Invalid value found: " . Dumper( $value_ref )
+            die "Invalid value found: " . Data::Dumper->new( [ $value_ref ] )->Terse( 1 )->Indent( 0 )->Dump( )
                 if !$value_ref->{name}
-                    || !defined( $value_ref->{value} )
-                    || !defined( $value_ref->{read} );
+                    || !defined( $value_ref->{value} );
 
-            $value_ref->{id} = $value_ref->{name},
+            $value_ref->{read} //= $value_ref->{name};
+            $value_ref->{id} = "$type_name.$value_ref->{name}";
             $value_ref->{title} = "$type_ref->{name}.$value_ref->{name}";
             $value_ref->{indexes} = [
                 @{ $value_ref }{ qw( id value title ) },
