@@ -13,6 +13,10 @@ PLIST_NAME	= $(dictionary_name)Info.plist
 DICTIONARY_NAME	= $(dictionary_name)Dictionary.xml
 CSS_NAME	= $(dictionary_name)Dictionary.css
 
+.PHONY: all template instantiate build install test
+
+all: template instantiate build install
+
 template:
 	mkdir -p $(TEMPLATE_DIR)
 	cp $(META_TEMPLATE_DIR)/xml.tmpl "$(TEMPLATE_DIR)/$(dictionary_name).tmpl"

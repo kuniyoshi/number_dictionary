@@ -6,7 +6,7 @@ use warnings;
 use open qw( :utf8 :std );
 use Data::Dumper;
 use Readonly;
-use List::MoreUtils qw( zip );
+use List::MoreUtils qw( zip uniq );
 use Template;
 
 our $template_filename
@@ -110,7 +110,7 @@ END_DIE
             $value_ref->{id} = "$type_name.$value_ref->{name}";
             $value_ref->{title} = "$type_ref->{name}.$value_ref->{name}";
             $value_ref->{indexes} = [
-                @{ $value_ref }{ qw( id value title ) },
+                uniq @{ $value_ref }{ qw( id name value title ) },
             ];
 
             push @{ $value_ref->{indexes} }, $value_ref->{read}
