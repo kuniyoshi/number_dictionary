@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <d:dictionary xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://www.apple.com/DTDs/DictionaryService-1.0.rng">
-[% FOREACH type IN types -%]
-<d:entry id="[% type.id %]" d:title="[% type.name %]">
-	<d:index d:value="[% type.name %]"/>
-	<div d:priority="2"><h1>[% type.name %]</h1></div>
-	<div>[% type.read %]</div>
+<!-- enums -->
+<!-- MoveSpeedType { Slow = 1, Normal = 2, Fast = 3 } -->
+<!-- {id => "MoveSpeedType", title => "移動速さ (MoveSpeedType)", indexes => ["移動速さ", "MoveSpeedType"], values => [{key => "Slow", value => 1}]} -->
+[% FOREACH group IN groups -%]
+<d:entry id="[% group.id %]" d:title="[% group.title %]">
+[%   FOREACH index IN group.indexes -%]
+	<d:index d:value="[% index %]"/>
+[%   END # FOREACH index IN group.indexes -%]
+	<div d:priority="2"><h2>[% group.title %]</h2></div>
 	<div d:priority="2">
 		<ul>
-[%   FOREACH value IN type.values -%]
-			<li>[% value.name %] : [% value.value %]</li>
-[%   END # FOREACH value IN type.values -%]
+[%   FOREACH key_value IN group.values -%]
+			<li>[% key_value.key %] : [% key_value.value %]</li>
+[%   END # FOREACH value IN group.values -%]
 		</ul>
 	</div>
-	<div d:priority="2">
-		<h3><a href="[% type.url %]"><b>ソース</b></a></h3>
-	</div>
 </d:entry>
-[%   FOREACH value IN type.values -%]
-<d:entry id="[% value.id %]" d:title="[% value.title %]">
-[%     FOREACH index IN value.indexes -%]
+[% END # FOREACH group IN groups -%]
+
+<!-- tables -->
+<!-- attack_type: 1,刀剣 -->
+<!-- {id => "attack_type.1", title => "刀剣 [1]", indexes => ["刀剣", 1 ]} -->
+<!-- enum value -->
+<!-- MoveSpeedType { Slow = 1, Normal = 2, Fast = 3 } -->
+<!-- {id => "MoveSpeedType.Slow", title => "移動速さ.遅い (Slow) [1]", indexes => ["遅い", "Slow", 1]} -->
+[% FOREACH simple IN simples -%]
+<d:entry id="[% simple.id %]" d:title="[% simple.title %]">
+[%     FOREACH index IN simple.indexes -%]
 	<d:index d:value="[% index %]"/>
-[%     END # FOREACH index IN value.indexes -%]
-	<div d:priority="2"><h1>[% type.name %].[% value.name %] ([% value.read %]) = [% value.value %]</h1></div>
+[%     END # FOREACH index IN simple.indexes -%]
+	<div d:priority="2"><h3>[% simple.title %]</h3></div>
 </d:entry>
-[%   END # FOREACH value IN type.values -%]
-[% END # FOREACH type IN types -%]
+[% END # FOREACH record IN table.records -%]
 </d:dictionary>

@@ -7,14 +7,8 @@ use open qw( :utf8 :std );
 use Data::Dumper;
 use Readonly;
 
-Readonly my @HEADERS => qw(
-    type
-    type_read
-    type_url
-    name
-    value
-    read
-);
+Readonly my $GROUP_KEY  => "group";
+Readonly my $SIMPLE_KEY => "simple";
 
 Readonly my $STATE_WAIT_ENUM        => "wait_enum";
 Readonly my $STATE_IN_ENUM_SUMMARY  => "in_enum_summary";
@@ -47,8 +41,6 @@ my %processor = (
     $STATE_IN_VALUE         => \&process_in_value,
     $STATE_END_ENUM         => \&process_end_enum,
 );
-
-say join "\t", @HEADERS;
 
 while ( <> ) {
     chomp( my $line = $_ );
@@ -95,16 +87,38 @@ sub format_type {
                 || !defined( $value_ref->{value} );
 
         my $value_read = $value_ref->{read};
+        my $first_title = $type_read || $type_name;
+        my $last_title = $value_read || $value_ref->{name};
+        my $title = $value_read
+            ? "$first_title.$last_title ($value_ref->{name}) [$value_ref->{value}]"
+            : "$first_title.$value_ref->{name} [$value_ref->{value}]";
 
-        my @columns = (
-            $type_name,
-            $type_read,
-            "no_url_for_now",
-            @{ $value_ref }{ qw( name value read ) },
+        my %simple = (
+            type    => $SIMPLE_KEY,
+            value   => {
+                id      => "$type_name.$value_ref->{name}",
+                title   => $title,
+                indexes => [ grep { $_ } ( $value_read, $value_ref->{name}, $value_ref->{value} ) ],
+            },
         );
 
-        push @rows, join "\t", map { $_ //= q{} } @columns;
+        push @rows, Data::Dumper->new( [ \%simple ] )->Terse( 1 )->Indent( 0 )->Sortkeys( 1 )->Dump( );
     }
+
+    my %group = (
+        type    => $GROUP_KEY,
+        value   => {
+            id      => $type_name,
+            title   => ( $type_read ? "$type_read ($type_name)" : $type_name ),
+            indexes => [ grep { $_ } ( $type_read, $type_name ) ],
+            values  => [
+                map { { key => $_->{name}, value => $_->{value} } }
+                @{ $values_ref }
+            ],
+        }
+    );
+
+    push @rows, Data::Dumper->new( [ \%group ] )->Terse( 1 )->Indent( 0 )->Sortkeys( 1 )->Dump( );
 
     return @rows;
 }
