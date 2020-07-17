@@ -1,6 +1,6 @@
 NAME
 
-enum number dictionary
+number dictionary
 
 USAGE
 
