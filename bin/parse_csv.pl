@@ -83,8 +83,8 @@ sub create_indexes {
         my %index = ( value => $token );
         $key_value{ $token } = \%index;
 
-        my @sub_tokens = split m{(\p{Katakana}+)}, $token;
-        push @sub_tokens, split m{(\p{Hiragana}+)}, $token;
+        my @sub_tokens = split m{(\p{Katakana}{2,}+)}, $token; # exclude single char token which where ー
+        push @sub_tokens, split m{(\p{Hiragana}{2,}+)}, $token; # exclude single char token which where ー
 
         for my $sub_token ( @sub_tokens ) {
             my %sub_index = ( value => $sub_token );

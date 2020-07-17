@@ -3,7 +3,7 @@
     dictionary_name         => "MyProject",
     dictionary_read         => "MY PROJECT",
     dictionary_identifier   => "com.example.my-project",
-    version                 => "0.03",
+    version                 => "0.04",
 
     csv_field_map => {
 # out: type type_read type_url name value read

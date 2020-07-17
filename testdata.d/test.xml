@@ -115,22 +115,21 @@
 	<div d:priority="2"><h3>ナイトメア [9]</h3></div>
 </d:entry>
 <d:entry id="attack_type.10" d:title="夢と希望 [10]">
-	<d:index d:value="希望"/>
 	<d:index d:value="夢と希望"/>
-	<d:index d:value="夢"/>
 	<d:index d:value="10"/>
 	<div d:priority="2"><h3>夢と希望 [10]</h3></div>
 </d:entry>
 <d:entry id="attack_type.11" d:title="アカイ・タイヨウ [11]">
-	<d:index d:value="アカイ"/>
 	<d:index d:value="アカイ・タイヨウ"/>
 	<d:index d:value="あかい・たいよう" d:title="アカイ・タイヨウ" d:yomi="あかい・たいよう"/>
+	<d:index d:value="アカイ"/>
+	<d:index d:value="あかい" d:title="アカイ" d:yomi="あかい"/>
 	<d:index d:value="タイヨウ"/>
+	<d:index d:value="たいよう" d:title="タイヨウ" d:yomi="たいよう"/>
 	<d:index d:value="11"/>
 	<div d:priority="2"><h3>アカイ・タイヨウ [11]</h3></div>
 </d:entry>
 <d:entry id="attack_type.12" d:title="「強い」雪 [12]">
-	<d:index d:value="強"/>
 	<d:index d:value="雪"/>
 	<d:index d:value="「強い」雪"/>
 	<d:index d:value="強い"/>
@@ -138,12 +137,20 @@
 	<div d:priority="2"><h3>「強い」雪 [12]</h3></div>
 </d:entry>
 <d:entry id="attack_type.13" d:title="セツナ【エナ】 [13]">
+	<d:index d:value="エナ"/>
+	<d:index d:value="えな" d:title="エナ" d:yomi="えな"/>
+	<d:index d:value="セツナ"/>
+	<d:index d:value="せつな" d:title="セツナ" d:yomi="せつな"/>
 	<d:index d:value="セツナ【エナ】"/>
 	<d:index d:value="せつな【えな】" d:title="セツナ【エナ】" d:yomi="せつな【えな】"/>
-	<d:index d:value="エナ"/>
-	<d:index d:value="セツナ"/>
 	<d:index d:value="13"/>
 	<div d:priority="2"><h3>セツナ【エナ】 [13]</h3></div>
+</d:entry>
+<d:entry id="attack_type.13" d:title="エターナ [13]">
+	<d:index d:value="エターナ"/>
+	<d:index d:value="えたーな" d:title="エターナ" d:yomi="えたーな"/>
+	<d:index d:value="13"/>
+	<div d:priority="2"><h3>エターナ [13]</h3></div>
 </d:entry>
 </d:dictionary>
 
