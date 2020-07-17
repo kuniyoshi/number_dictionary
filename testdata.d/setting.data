@@ -1,0 +1,5 @@
+{
+    csv_field_map => {
+        attack_type => sub { return @_[0, 1] },
+    },
+};

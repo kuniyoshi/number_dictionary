@@ -98,7 +98,7 @@ sub format_type {
             value   => {
                 id      => "$type_name.$value_ref->{name}",
                 title   => $title,
-                indexes => [ grep { $_ } ( $value_read, $value_ref->{name}, $value_ref->{value} ) ],
+                indexes => [ map { { value => $_ } } grep { $_ } ( $value_read, $value_ref->{name}, $value_ref->{value} ) ],
             },
         );
 
@@ -110,7 +110,7 @@ sub format_type {
         value   => {
             id      => $type_name,
             title   => ( $type_read ? "$type_read ($type_name)" : $type_name ),
-            indexes => [ grep { $_ } ( $type_read, $type_name ) ],
+            indexes => [ map { { value => $_ } } grep { $_ } ( $type_read, $type_name ) ],
             values  => [
                 map { { key => $_->{name}, value => $_->{value} } }
                 @{ $values_ref }

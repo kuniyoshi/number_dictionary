@@ -2,11 +2,14 @@
 <d:dictionary xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://www.apple.com/DTDs/DictionaryService-1.0.rng">
 <!-- enums -->
 <!-- MoveSpeedType { Slow = 1, Normal = 2, Fast = 3 } -->
-<!-- {type => "group", value => {id => "MoveSpeedType", title => "移動速さ (MoveSpeedType)", indexes => ["移動速さ", "MoveSpeedType"], values => [{key => "Slow", value => 1}]}} -->
+<!-- {type => "group", value => {id => "MoveSpeedType", title => "移動速さ (MoveSpeedType)", indexes => [{value => "移動速さ"}, {value => "MoveSpeedType"}], values => [{key => "Slow", value => 1}]}} -->
 [% FOREACH group IN groups -%]
 <d:entry id="[% group.id %]" d:title="[% group.title %]">
 [%   FOREACH index IN group.indexes -%]
-	<d:index d:value="[% index %]"/>
+	<d:index d:value="[% index.value %]"/>
+[%     IF index.yomi -%]
+	<d:index d:value="[% index.yomi %]" d:title="[% index.value %]" d:yomi="[% index.yomi %]"/>
+[%     END # IF index.yomi -%]
 [%   END # FOREACH index IN group.indexes -%]
 	<div d:priority="2"><h2>[% group.title %]</h2></div>
 	<div d:priority="2">
@@ -21,15 +24,18 @@
 
 <!-- tables -->
 <!-- attack_type: 1,刀剣 -->
-<!-- {type => "simple", value => {id => "attack_type.1", title => "刀剣 [1]", indexes => ["刀剣", 1 ]}} -->
+<!-- {type => "simple", value => {id => "attack_type.1", title => "刀剣 [1]", indexes => [{value => "刀剣", yomi => "とうけん"}, {value => 1}]}} -->
 <!-- enum value -->
 <!-- MoveSpeedType { Slow = 1, Normal = 2, Fast = 3 } -->
 <!-- {type => "simple", value => {id => "MoveSpeedType.Slow", title => "移動速さ.遅い (Slow) [1]", indexes => ["遅い", "Slow", 1]}} -->
 [% FOREACH simple IN simples -%]
 <d:entry id="[% simple.id %]" d:title="[% simple.title %]">
-[%     FOREACH index IN simple.indexes -%]
-	<d:index d:value="[% index %]"/>
-[%     END # FOREACH index IN simple.indexes -%]
+[%   FOREACH index IN simple.indexes -%]
+	<d:index d:value="[% index.value %]"/>
+[%     IF index.yomi -%]
+	<d:index d:value="[% index.yomi %]" d:title="[% index.value %]" d:yomi="[% index.yomi %]"/>
+[%     END # IF index.yomi -%]
+[%   END # FOREACH index IN simple.indexes -%]
 	<div d:priority="2"><h3>[% simple.title %]</h3></div>
 </d:entry>
 [% END # FOREACH record IN table.records -%]

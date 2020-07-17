@@ -58,6 +58,6 @@ test:
 		ls testdata.d/*.cs \
 			| xargs $(PARSE_ENUM); \
 		ls testdata.d/*.csv \
-			| xargs $(PARSE_CSV) -setting_filepath=./bin/$(SETTING_FILENAME); \
+			| xargs $(PARSE_CSV) -setting_filepath=./testdata.d/setting.data; \
 	} \
 		| $(CREATE) -template_filename=testdata.d/test.tmpl | tee testdata.d/test.xml

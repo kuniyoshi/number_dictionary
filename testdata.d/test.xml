@@ -2,7 +2,7 @@
 <d:dictionary xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://www.apple.com/DTDs/DictionaryService-1.0.rng">
 <!-- enums -->
 <!-- MoveSpeedType { Slow = 1, Normal = 2, Fast = 3 } -->
-<!-- {type => "group", value => {id => "MoveSpeedType", title => "移動速さ (MoveSpeedType)", indexes => ["移動速さ", "MoveSpeedType"], values => [{key => "Slow", value => 1}]}} -->
+<!-- {type => "group", value => {id => "MoveSpeedType", title => "移動速さ (MoveSpeedType)", indexes => [{value => "移動速さ"}, {value => "MoveSpeedType"}], values => [{key => "Slow", value => 1}]}} -->
 <d:entry id="MoveSpeedType" d:title="MoveSpeedType">
 	<d:index d:value="MoveSpeedType"/>
 	<div d:priority="2"><h2>MoveSpeedType</h2></div>
@@ -28,7 +28,7 @@
 
 <!-- tables -->
 <!-- attack_type: 1,刀剣 -->
-<!-- {type => "simple", value => {id => "attack_type.1", title => "刀剣 [1]", indexes => ["刀剣", 1 ]}} -->
+<!-- {type => "simple", value => {id => "attack_type.1", title => "刀剣 [1]", indexes => [{value => "刀剣", yomi => "とうけん"}, {value => 1}]}} -->
 <!-- enum value -->
 <!-- MoveSpeedType { Slow = 1, Normal = 2, Fast = 3 } -->
 <!-- {type => "simple", value => {id => "MoveSpeedType.Slow", title => "移動速さ.遅い (Slow) [1]", indexes => ["遅い", "Slow", 1]}} -->
@@ -107,6 +107,43 @@
 	<d:index d:value="祈祷"/>
 	<d:index d:value="8"/>
 	<div d:priority="2"><h3>祈祷 [8]</h3></div>
+</d:entry>
+<d:entry id="attack_type.9" d:title="ナイトメア [9]">
+	<d:index d:value="ナイトメア"/>
+	<d:index d:value="ないとめあ" d:title="ナイトメア" d:yomi="ないとめあ"/>
+	<d:index d:value="9"/>
+	<div d:priority="2"><h3>ナイトメア [9]</h3></div>
+</d:entry>
+<d:entry id="attack_type.10" d:title="夢と希望 [10]">
+	<d:index d:value="希望"/>
+	<d:index d:value="夢と希望"/>
+	<d:index d:value="夢"/>
+	<d:index d:value="10"/>
+	<div d:priority="2"><h3>夢と希望 [10]</h3></div>
+</d:entry>
+<d:entry id="attack_type.11" d:title="アカイ・タイヨウ [11]">
+	<d:index d:value="アカイ"/>
+	<d:index d:value="アカイ・タイヨウ"/>
+	<d:index d:value="あかい・たいよう" d:title="アカイ・タイヨウ" d:yomi="あかい・たいよう"/>
+	<d:index d:value="タイヨウ"/>
+	<d:index d:value="11"/>
+	<div d:priority="2"><h3>アカイ・タイヨウ [11]</h3></div>
+</d:entry>
+<d:entry id="attack_type.12" d:title="「強い」雪 [12]">
+	<d:index d:value="強"/>
+	<d:index d:value="雪"/>
+	<d:index d:value="「強い」雪"/>
+	<d:index d:value="強い"/>
+	<d:index d:value="12"/>
+	<div d:priority="2"><h3>「強い」雪 [12]</h3></div>
+</d:entry>
+<d:entry id="attack_type.13" d:title="セツナ【エナ】 [13]">
+	<d:index d:value="セツナ【エナ】"/>
+	<d:index d:value="せつな【えな】" d:title="セツナ【エナ】" d:yomi="せつな【えな】"/>
+	<d:index d:value="エナ"/>
+	<d:index d:value="セツナ"/>
+	<d:index d:value="13"/>
+	<div d:priority="2"><h3>セツナ【エナ】 [13]</h3></div>
 </d:entry>
 </d:dictionary>
 
