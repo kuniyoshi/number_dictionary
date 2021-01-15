@@ -6,6 +6,7 @@ BIN_DIR			=	bin
 PARSE_ENUM		=	$(BIN_DIR)/parse_cs.pl
 PARSE_CSV		=	$(BIN_DIR)/parse_csv.pl
 CREATE			=	$(BIN_DIR)/create.pl
+IMAGE			=	$(BIN_DIR)/image.pl
 
 LIST_CS_FILES	=	bin/list.sh
 LIST_CSV_FILES	=	bin/list_csv.sh
@@ -15,9 +16,9 @@ PLIST_NAME	= $(dictionary_name)Info.plist
 DICTIONARY_NAME	= $(dictionary_name)Dictionary.xml
 CSS_NAME	= $(dictionary_name)Dictionary.css
 
-.PHONY: all template instantiate build install clean test
+.PHONY: all template instantiate image build install clean test
 
-all: template instantiate build install
+all: template instantiate image build install
 
 template:
 	mkdir -p $(TEMPLATE_DIR)
@@ -42,6 +43,10 @@ instantiate:
 	} \
 		| $(CREATE) -template_filename=$(TEMPLATE_DIR)/$(dictionary_name).tmpl \
 		>"$(DICTIONARY_DIR)/$(DICTIONARY_NAME)"
+
+image:
+	$(LIST_CSV_FILES) \
+		| xargs $(IMAGE) -setting_filepath=./$(BIN_DIR)/$(SETTING_FILENAME)
 
 build:
 	$(MAKE) -C $(DICTIONARY_DIR)

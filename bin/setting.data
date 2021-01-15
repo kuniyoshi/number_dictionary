@@ -8,7 +8,12 @@
     csv_field_map => {
 # out: type type_read type_url name value read
 
-# in: id name read
+# in: id, name read
         attack_type => sub { return @_[0, 1] },
     },
+
+    icon_base_dir       => "path/to/icon/basedir",
+# in: id, csv_basename
+# out: icon_resource_path or undef
+    make_icon_path      => sub { my $id = shift; my $condition = shift; return if $condition ne "csv_which_has_icon"; return "$id.png" },
 };

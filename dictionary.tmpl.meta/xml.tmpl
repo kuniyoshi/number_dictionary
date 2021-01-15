@@ -37,6 +37,9 @@
 [%     END # IF index.yomi -%]
 [%   END # FOREACH index IN simple.indexes -%]
 	<div d:priority="2"><h3>[% simple.title %]</h3></div>
+[%   IF simple.icon_path -%]
+	<span class="picture"><img src="[% simple.icon_path %]" alt="[% simple.id %]"/></span>
+[%   END # IF simple.icon_path -%]
 </d:entry>
 [% END # FOREACH record IN table.records -%]
 </d:dictionary>

@@ -11,8 +11,9 @@ use Path::Class qw( file );
 use File::Basename qw( basename );
 use Lingua::JA::Regular::Unicode qw( katakana2hiragana );
 
-Readonly my $SIMPLE_KEY     => "simple";
-Readonly my $MAP_SUB_KEY    => "csv_field_map";
+Readonly my $SIMPLE_KEY         => "simple";
+Readonly my $MAP_SUB_KEY        => "csv_field_map";
+Readonly my $MAKE_ICON_SUB_KEY  => "make_icon_path";
 
 our $setting_filepath
     or die usage( );
@@ -26,6 +27,12 @@ my $map_sub = $setting->{ $MAP_SUB_KEY }
     or die <<END_DIE;
 No map sub found in setting file
 e.g.: $MAP_SUB_KEY => { some_csv_file => sub { return \@_[0, 1] } }
+END_DIE
+
+my $make_icon_sub = $setting->{ $MAKE_ICON_SUB_KEY }
+    or die <<END_DIE;
+No make icon sub found in setting file
+e.g.: $MAKE_ICON_SUB_KEY => { my \$id = shift; return "images/\$id.png" }
 END_DIE
 
 for my $filepath ( @ARGV ) {
@@ -54,12 +61,15 @@ for my $filepath ( @ARGV ) {
         die "Could not get data : $line"
             if !( defined $id ) || !( defined $value );
 
+        my $icon_path = $make_icon_sub->( $id, $basename );
+
         my %simple = (
             type    => $SIMPLE_KEY,
             value   => {
-                id      => "$basename.$id",
-                title   => "$value [$id]",
-                indexes => [ map { create_indexes( $_ ) } ( $value, $id ) ],
+                id          => "$basename.$id",
+                title       => "$value [$id]",
+                indexes     => [ map { create_indexes( $_ ) } ( $value, $id ) ],
+                icon_path   => $icon_path,
             },
         );
 
