@@ -59,10 +59,10 @@ clean:
 	rm -Rf $(TEMPLATE_DIR)
 
 test:
-	{ \
+	sh -c '{ \
 		ls testdata.d/*.cs \
 			| xargs $(PARSE_ENUM); \
 		ls testdata.d/*.csv \
 			| xargs $(PARSE_CSV) --setting ./testdata.d/setting.data; \
-	} \
+	}' \
 		| $(CREATE) --template testdata.d/test.tmpl | tee testdata.d/test.xml
