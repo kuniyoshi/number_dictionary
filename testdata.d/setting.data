@@ -2,4 +2,5 @@
     csv_field_map => {
         attack_type => sub { return @_[0, 1] },
     },
+    make_icon_path => sub { "images/empty.png" },
 };

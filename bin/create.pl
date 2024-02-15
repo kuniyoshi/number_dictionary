@@ -1,4 +1,4 @@
-#!/usr/bin/env perl -s
+#!/usr/bin/env perl
 use 5.10.0;
 use utf8;
 use strict;
@@ -7,12 +7,16 @@ use open qw( :utf8 :std );
 use Data::Dumper;
 use Readonly;
 use Template;
+use Getopt::Long;
 
 Readonly my $GROUP_KEY  => "group";
 Readonly my $SIMPLE_KEY => "simple";
 
-our $template_filename
+GetOptions(
+    "template=s" => \my $template_filename
+)
     or die usage( );
+
 die "No [$template_filename] found"
     unless -e $template_filename;
 
@@ -62,6 +66,6 @@ exit;
 
 sub usage {
     return <<END_USAGE;
-usage: $0 -template_filename=<template filename>
+usage: $0 --template <template filename>
 END_USAGE
 }

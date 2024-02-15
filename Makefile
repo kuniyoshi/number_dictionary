@@ -39,14 +39,14 @@ instantiate:
 		$(LIST_CS_FILES) \
 			| xargs $(PARSE_ENUM); \
 		$(LIST_CSV_FILES) \
-			| xargs $(PARSE_CSV) -setting_filepath=./$(BIN_DIR)/$(SETTING_FILENAME); \
+			| xargs $(PARSE_CSV) --setting ./$(BIN_DIR)/$(SETTING_FILENAME); \
 	} \
-		| $(CREATE) -template_filename=$(TEMPLATE_DIR)/$(dictionary_name).tmpl \
+		| $(CREATE) --template $(TEMPLATE_DIR)/$(dictionary_name).tmpl \
 		>"$(DICTIONARY_DIR)/$(DICTIONARY_NAME)"
 
 image:
 	$(LIST_CSV_FILES) \
-		| xargs $(IMAGE) -setting_filepath=./$(BIN_DIR)/$(SETTING_FILENAME)
+		| xargs $(IMAGE) --setting ./$(BIN_DIR)/$(SETTING_FILENAME)
 
 build:
 	$(MAKE) -C $(DICTIONARY_DIR)
@@ -63,6 +63,6 @@ test:
 		ls testdata.d/*.cs \
 			| xargs $(PARSE_ENUM); \
 		ls testdata.d/*.csv \
-			| xargs $(PARSE_CSV) -setting_filepath=./testdata.d/setting.data; \
+			| xargs $(PARSE_CSV) --setting ./testdata.d/setting.data; \
 	} \
-		| $(CREATE) -template_filename=testdata.d/test.tmpl | tee testdata.d/test.xml
+		| $(CREATE) --template testdata.d/test.tmpl | tee testdata.d/test.xml

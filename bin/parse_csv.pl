@@ -1,4 +1,4 @@
-#!/usr/bin/env perl -s
+#!/usr/bin/env perl
 use 5.10.0;
 use utf8;
 use strict;
@@ -10,12 +10,15 @@ use Text::CSV;
 use Path::Class qw( file );
 use File::Basename qw( basename );
 use Lingua::JA::Regular::Unicode qw( katakana2hiragana );
+use Getopt::Long;
 
 Readonly my $SIMPLE_KEY         => "simple";
 Readonly my $MAP_SUB_KEY        => "csv_field_map";
 Readonly my $MAKE_ICON_SUB_KEY  => "make_icon_path";
 
-our $setting_filepath
+GetOptions(
+    "setting=s" => \my $setting_filepath,
+)
     or die usage( );
 die "No [$setting_filepath] file found"
     unless -e $setting_filepath;
@@ -129,6 +132,6 @@ sub add_yomi {
 
 sub usage {
     return <<END_USAGE;
-usage: $0 -setting_filepath=<perl data path>
+usage: $0 --setting <perl data path>
 END_USAGE
 }
