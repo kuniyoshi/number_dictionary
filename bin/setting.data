@@ -3,12 +3,11 @@
     dictionary_name         => "MyProject",
     dictionary_read         => "MY PROJECT",
     dictionary_identifier   => "com.example.my-project",
-    version                 => "0.04",
+    version                 => "0.01",
 
     csv_field_map => {
-# out: type type_read type_url name value read
-
-# in: id, name read
+# in: csv columns
+# out: id, name read
         attack_type => sub { return @_[0, 1] },
     },
 
