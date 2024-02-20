@@ -9,6 +9,8 @@
 # in: csv columns
 # out: id, name read
         attack_type => sub { return @_[0, 1] },
+        characters  => sub { return @_[0, 1, 2] },
+        skills      => sub { return @_[0, 1] },
     },
 
     icon_base_dir       => "path/to/icon/basedir",
