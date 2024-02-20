@@ -20,6 +20,8 @@ GetOptions(
     "setting=s" => \my $setting_filepath,
 )
     or die usage( );
+die usage( )
+    unless $setting_filepath;
 die "No [$setting_filepath] file found"
     unless -e $setting_filepath;
 

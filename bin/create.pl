@@ -16,7 +16,8 @@ GetOptions(
     "template=s" => \my $template_filename
 )
     or die usage( );
-
+die usage( )
+    unless $template_filename;
 die "No [$template_filename] found"
     unless -e $template_filename;
 
