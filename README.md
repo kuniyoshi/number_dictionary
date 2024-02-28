@@ -15,6 +15,16 @@ IMAGE
 
 ![search result](image/search_by_3.png)
 
+OTHER RESOURCE
+
+If the dictionary uses images, then,
+
+1. make make_icon_path returns relative path below
+1. mkdir dictionary/OtherResources
+1. place images in OtherResources.
+
+See detail in `Dictionary Development Kit/documents/Dictionary Development Kit.rtf`.
+
 PREPARE
 
 This requires `Dictionary Development Kit` where in `Additional Tools for Xcode`.
